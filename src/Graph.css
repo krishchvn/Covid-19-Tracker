@@ -1,0 +1,12 @@
+@media (min-width: 990px){
+    .graph{
+      max-height: 400px;
+      max-width: 700px;
+    }
+}
+@media (max-width: 991px) {
+    .graph {
+        max-height: 400px;
+        min-width: 300px;
+    }
+}
