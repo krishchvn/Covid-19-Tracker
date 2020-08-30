@@ -13,7 +13,7 @@ import Table from './Table';
 import { sortData, prettyPrintStat } from './util';
 import LineGraph from './LineGraph';
 import 'leaflet/dist/leaflet.css';
-//import numeral from 'numeral';
+import numeral from 'numeral';
 
 const App =() => {
   const [countries, setCountries] = useState([]);
@@ -26,7 +26,7 @@ const App =() => {
   });
   const [mapZoom, setMapZoom] = useState(3);
   const [mapCountries, setMapCountries] = useState({});
-  const [casesType, setCasesType] = useState('cases');
+  const [casesType, setCasesType] = useState("cases");
 
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
@@ -56,10 +56,10 @@ const App =() => {
     getCountriesData();
   }, []);
 
-  //console.log(casesType);
+  console.log("CasesType: ",casesType);
 
-  const onCountryChange = async(event) => {
-    const countryCode = event.target.value;
+  const onCountryChange = async(e) => {
+    const countryCode = e.target.value;
 
     const url =
       countryCode === 'worldwide'
@@ -88,17 +88,11 @@ const App =() => {
               variant='outlined'
               value={country}
               onChange={onCountryChange}>
-              <MenuItem value='worldwide'>Worldwide</MenuItem>
+              <MenuItem value="worldwide">Worldwide</MenuItem>
               {countries.map((country) => (
                 <MenuItem value={country.value}>{country.name}</MenuItem>
               ))}
 
-              {/*
-                <MenuItem value = "worldwide">Worldwide</MenuItem>
-                <MenuItem value = "worldwide">opt 1</MenuItem>
-                <MenuItem value = "worldwide">opt2</MenuItem>
-                <MenuItem value = "worldwide">opt3</MenuItem>
-              */}
 
             </Select>
           </FormControl>
@@ -107,16 +101,16 @@ const App =() => {
         <div className='app__stats'>
           <InfoBox
             isRed
-            active={casesType === 'cases'}
-            onClick={(e) => setCasesType('cases')}
+            active={casesType === "cases"}
+            onClick={(e) => setCasesType("cases")}
             title='Coronavirus cases'
             cases={prettyPrintStat(countryInfo.todayCases)}
             total={prettyPrintStat(countryInfo.cases)}
           />
 
           <InfoBox
-            active={casesType === 'recovered'}
-            onClick={(e) => setCasesType('recovered')}
+            active={casesType === "recovered"}
+            onClick={(e) => setCasesType("recovered")}
             title='Recovered'
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={prettyPrintStat(countryInfo.recovered)}
@@ -124,8 +118,8 @@ const App =() => {
 
           <InfoBox
             isRed
-            active={casesType === 'deaths'}
-            onClick={(e) => setCasesType('deaths')}
+            active={casesType === "deaths"}
+            onClick={(e) => setCasesType("deaths")}
             title='Deaths '
             cases={prettyPrintStat(countryInfo.todayDeaths)}
             total={prettyPrintStat(countryInfo.deaths)}
@@ -140,16 +134,17 @@ const App =() => {
         />
 
       </div>
-      
+
       <Card className='app__right'>
         <CardContent>
           <Table countries={tableData} />
           <h3 className="app__graphTitle"> Worldwide New {casesType}</h3>
           <LineGraph className= "app__graph" casesType={casesType} />
+          
         </CardContent>
       </Card>
     </div>
   );
-}
+};
 
 export default App;

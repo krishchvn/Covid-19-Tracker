@@ -10,7 +10,7 @@ function InfoBox({ title, cases, isRed, active, total, ...props }) {
       }`}
       onClick={props.onClick}>
       <CardContent>
-        <Typography className='infoBox__title' color='secondary'>
+        <Typography className='infoBox__title' color='textsecondary'>
           {title}
         </Typography>
 
@@ -18,7 +18,7 @@ function InfoBox({ title, cases, isRed, active, total, ...props }) {
           {cases}
         </h2>
 
-        <Typography className='infoBox__total' color='secondary'>
+        <Typography className='infoBox__total' color='textsecondary'>
           {total} Total
         </Typography>
       </CardContent>
