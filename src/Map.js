@@ -15,6 +15,6 @@ function Map({ countries, casesType, center, zoom }) {
       </LeafletMap>
     </div>
   );
-}
+};
 
 export default Map;

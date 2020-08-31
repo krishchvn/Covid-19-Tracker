@@ -18,13 +18,11 @@
     margin-top: 15px !important;
 }
 .infoBox--selected {
-    border-top: 7px solid greenyellow;
-    transition: 0.3s ease-in;
+    border-top: 7px solid rgba(161, 245, 35, 0.815);
 }
 .infoBox--Red {
     border-color: red;
-    transition: 0.3s linear;
 }
 .infoBox__cases--green {
-    color: lightgreen !important;
+    color: rgba(161, 245, 35, 0.815) !important;
 }
